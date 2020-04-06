@@ -4,6 +4,7 @@ subtitle: "MEB ABS journal club"
 date: "2020-03-16"
 output:
   xaringan::moon_reader:
+    css: ["default", "default-fonts", "theme.css"]
     lib_dir: libs
     nature:
       highlightStyle: github
@@ -51,14 +52,17 @@ include_graphics("figs/phd101212s_final_doc.gif")
 include_graphics("figs/xkcd_git_commit.png")
 ```
 
+https://xkcd.com/1296/
+
 ---
 
 # Discussion points:
 
+.large[
 - overhead vs usefulness of version control software
 - version control if not using R(studio)
 - version control in solo vs collaborative analyses
 - what to put under version control
 (code/data/results/manuscripts/none/all)?
 - sensitive data vs public code repositories (e.g. Github)
-
+]
