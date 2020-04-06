@@ -1,4 +1,8 @@
 /* customize theme */
 
-.large { font-size: 150% }
+.large { font-size: 140% }
 .small { font-size: 70% }
+
+li {
+  margin: 0.8em 0;
+}
