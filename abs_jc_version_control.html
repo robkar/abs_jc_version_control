@@ -3,6 +3,7 @@
   <head>
     <title>Excuse me, do you have a moment to talk about version control?</title>
     <meta charset="utf-8" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
     <link rel="stylesheet" href="theme.css" type="text/css" />
@@ -11,9 +12,15 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Excuse me, do you have a moment to talk about version control?
-## MEB ABS journal club
-### <del>2020-03-16</del> 2020-04-06
+]
+.subtitle[
+## MEB <del>ABS</del> DBA journal club
+]
+.date[
+### <del>2020-04-06</del> 2024-02-15
+]
 
 ---
 
@@ -24,6 +31,27 @@ class: center, middle, inverse, title-slide
 &lt;img src="figs/title.png" width="931" /&gt;
 
 https://doi.org/10.1080/00031305.2017.1399928
+
+---
+
+# Versionshantering och git
+
+.medium[
+- "version control" - program som hjälper dig att hålla ordning på ändringar i kod och dokumentation över tid
+
+  - *när* ändrades filen?
+  - *vad* ändrades?
+  - *vem* gjorde ändringen?
+  - *varför?*
+
+- enstaka filer eller stora projekt
+
+- många system finns/fanns (RCS, CVS, SVN, Mercurial...) men **[git](https://git-scm.com/)** mest populärt
+
+]
+
+&lt;img src="figs/git_logo.png" width="160" /&gt;
+
 
 ---
 
@@ -43,6 +71,20 @@ https://doi.org/10.1080/00031305.2017.1399928
 ]
 ---
 
+# Arbeta med git
+
+.medium[
+- GUI eller kommandorad eller både och
+
+- `git init` skapar en (dold) mapp `.git` för versionshantering
+
+- `git add ...` anger vilka filer/ändringar som utgör en "ny version"
+
+- `git commit -m "vad gör de här ändringarna?"` sparar ändringen med kort beskrivning
+]
+
+---
+
 # History only as useful as you make it
 
 &lt;img src="figs/xkcd_git_commit.png" width="585" /&gt;
@@ -60,6 +102,26 @@ https://xkcd.com/1296/
 ![](figs/paper_fig3.jpeg)&lt;!-- --&gt;
 
 ---
+background-image: url(figs/github_mark.png)
+background-size: 20%
+background-position: 90% 10%
+
+# Github
+
+.medium[
+- git är inte github - men de trivs bra ihop
+
+- varje kopia/klon av ett git-projekt innehåller hela ändringshistoriken
+
+- (särskilt) om flera samarbetar kan centralt repository underlätta
+
+- github eller lokal server efter smak och tycke
+
+]
+
+&lt;img src="figs/centralized_workflow.png" width="350" /&gt;
+
+---
 
 # Discussion points:
 
@@ -71,6 +133,16 @@ https://xkcd.com/1296/
 - sensitive data vs public code repositories (e.g. Github)
 - version control if not using R(studio)
 - other approaches (is ManuscriptTitle_ver2_PM_LY_RK.docx good enough?)
+]
+
+---
+
+# Tips/länkar
+
+.large[
+- [Code Refinery](https://coderefinery.org/) online git workshop 12-14 mars
+- [Happy git with R](https://happygitwithr.com/) tutorial för git och github med Rstudio
+- [GitHub docs](https://docs.github.com/en/get-started/start-your-journey/about-github-and-git) introduktion till git och github
 ]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
@@ -119,32 +191,35 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
-  /* Replace <script> tags in slides area to make them executable
-   *
-   * Runs after post-processing of markdown source into slides and replaces only
-   * <script>s on the last slide of continued slides using the .has-continuation
-   * class added by xaringan. Finally, any <script>s in the slides area that
-   * aren't executed are commented out.
-   */
+  // Replace <script> tags in slides area to make them executable
   var scripts = document.querySelectorAll(
-    '.remark-slides-area .remark-slide-container:not(.has-continuation) script'
+    '.remark-slides-area .remark-slide-container script'
   );
   if (!scripts.length) return;
   for (var i = 0; i < scripts.length; i++) {
     var s = document.createElement('script');
     var code = document.createTextNode(scripts[i].textContent);
     s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
     scripts[i].parentElement.replaceChild(s, scripts[i]);
-  }
-  var scriptsNotExecuted = document.querySelectorAll(
-    '.remark-slides-area .remark-slide-container.has-continuation script'
-  );
-  if (!scriptsNotExecuted.length) return;
-  for (var i = 0; i < scriptsNotExecuted.length; i++) {
-    var comment = document.createComment(scriptsNotExecuted[i].outerHTML)
-    scriptsNotExecuted[i].parentElement.replaceChild(comment, scriptsNotExecuted[i])
   }
 })();
 (function() {
